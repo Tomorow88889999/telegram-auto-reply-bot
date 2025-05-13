@@ -4,11 +4,11 @@ import random
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, CommandHandler, filters, ContextTypes
 
-BOT_A_TOKEN = os.getenv(7780406598 AAHiV8VpDiez_dVOSEbJMePMxq4t1gjibEo)
-BOT_B_TOKEN = os.getenv(7593884250 AAHsJ_1N6N2rymJdsP6s_Dx3lRjFmd50kW8)
+BOT_A_TOKEN = os.getenv('BOT_A_TOKEN')
+BOT_B_TOKEN = os.getenv('BOT_B_TOKEN')
 
 # Hitungan balasan per chat_id
-reply_count = {3}
+reply_count = {}
 
 # Delay slowmode (acak 3-5 detik biar natural)
 async def slow_delay():
@@ -31,9 +31,9 @@ async def bot_a_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if reply_count.get(chat_id, 0) < 3:
         reply_count[chat_id] = reply_count.get(chat_id, 0) + 1
-        await context.bot.send_message(chat_id=chat_id, text=f"🤖 Bot A balas #{reply_count[chat_id]}: {message}")
+        await context.bot.send_message(chat_id=chat_id, text=f"🤖 Bot A balas #{reply_count[chat_id]}: {Prediksi roulette hari ini bakal seperti apa ya?}")
         await slow_delay()
-        await bot_b_app.bot.send_message(chat_id=chat_id, text=f"🎯 Bot B merespon A #{reply_count[chat_id]}: '{message}'")
+        await bot_b_app.bot.send_message(chat_id=chat_id, text=f"🎯 Bot B merespon A #{reply_count[chat_id]}: '{ya sudah jelas pasti nya bakal tembus terus ga mungkin mleset}'")
 
 # Bot B balas lalu panggil Bot A lagi (maks 3x + delay slowmode)
 async def bot_b_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -42,9 +42,9 @@ async def bot_b_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if reply_count.get(chat_id, 0) < 3:
         reply_count[chat_id] = reply_count.get(chat_id, 0) + 1
-        await context.bot.send_message(chat_id=chat_id, text=f"🤖 Bot B balas #{reply_count[chat_id]}: {message}")
+        await context.bot.send_message(chat_id=chat_id, text=f"🤖 Bot B balas #{reply_count[chat_id]}: {Emang paling mantap tuh disini prediksi dan trick selalu tepat sasaran}")
         await slow_delay()
-        await bot_a_app.bot.send_message(chat_id=chat_id, text=f"🎯 Bot A merespon B #{reply_count[chat_id]}: '{message}'")
+        await bot_a_app.bot.send_message(chat_id=chat_id, text=f"🎯 Bot A merespon B #{reply_count[chat_id]}: '{ya jelas dong makanya ga pernah bosen mantengin tips and trick setiap hari nya dsni}'")
 
 # Setup Bot A
 bot_a_app = ApplicationBuilder().token(BOT_A_TOKEN).build()
